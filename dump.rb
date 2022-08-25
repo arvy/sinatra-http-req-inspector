@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'json'
 
 set :bind, '0.0.0.0'
 
@@ -8,5 +9,6 @@ post '/' do
     puts "content_length: #{request.content_length }"   # length of request.body
     puts "media_type: #{request.media_type }"       # media type of request.body
     puts "form_data?: #{request.form_data? }"       # false
+    puts JSON.pretty_generate(request.env)
 #    request.env               # raw env hash handed in by Rack
 end
